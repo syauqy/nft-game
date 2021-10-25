@@ -9,7 +9,11 @@ const main = async () => {
       "https://static.wikia.nocookie.net/gameofthrones/images/b/be/AryaShipIronThrone.PNG/revision/latest/scale-to-width-down/335?cb=20190520174300",
     ], //Images URL
     [200, 400, 250, 300], //HP values
-    [90, 50, 75, 65] //Attack damage values
+    [90, 50, 75, 65], //Attack damage values
+    "Night King", //boss name
+    "https://static.wikia.nocookie.net/gameofthrones/images/1/1f/Night_King_BTW.jpg/revision/latest/scale-to-width-down/350?cb=20210722093007", //boss image URI
+    10000, //boss hp
+    70 //boss attack damage
   );
 
   await gameContract.deployed();
@@ -20,6 +24,12 @@ const main = async () => {
   // We only have three characters.
   // an NFT w/ the character at index 2 of our array.
   txn = await gameContract.mintCharacterNFT(2);
+  await txn.wait();
+
+  txn = await gameContract.attackBoss();
+  await txn.wait();
+
+  txn = await gameContract.attackBoss();
   await txn.wait();
 
   // Get the value of the NFT's URI.

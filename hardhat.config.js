@@ -11,8 +11,8 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   }
 });
 
-console.log("Alchemy URL:", process.env.ALCHEMY_API_URL);
-console.log("Private Account:", process.env.RINKEBY_ACCOUNT_KEY);
+// console.log("Alchemy URL:", process.env.ALCHEMY_API_URL);
+// console.log("Private Account:", process.env.RINKEBY_ACCOUNT_KEY);
 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
