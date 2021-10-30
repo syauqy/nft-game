@@ -1,17 +1,22 @@
 const main = async () => {
   const gameContractFactory = await hre.ethers.getContractFactory("MyEpicGame");
   const gameContract = await gameContractFactory.deploy(
-    ["Jon Snow", "Daenerys Targaryen", "Sansa Stark", "Arya Stark"], //Names
     [
-      "https://static.wikia.nocookie.net/gameofthrones/images/d/d0/JonSnow8x06.PNG/revision/latest/scale-to-width-down/343?cb=20190714094440",
-      "https://static.wikia.nocookie.net/gameofthrones/images/4/4f/Daenerys_Season_8.jpg/revision/latest/scale-to-width-down/301?cb=20190415212013",
-      "https://static.wikia.nocookie.net/gameofthrones/images/6/63/QueenSansa.PNG/revision/latest/scale-to-width-down/301?cb=20210215100224",
-      "https://static.wikia.nocookie.net/gameofthrones/images/b/be/AryaShipIronThrone.PNG/revision/latest/scale-to-width-down/335?cb=20190520174300",
+      "Jon Snow",
+      "Daenerys Targaryen",
+      "Sansa Stark",
+      // "Arya Stark"], //Names
+    ],
+    [
+      "QmXGjpcPhjQ3XakCo4WjmcV8M9cqNAdYw9kSC5gLPmmwbc",
+      "QmNc8gETsvCKnbHHtr1wEssTaeX1zD7q2wqnFwa3zFaN7D",
+      "QmZd41XtAeRpWLDUsKeGq52AJU55RTf4QWoMw9hwj4z3tm",
+      // "https://imgur.com/TwIedHp",
     ], //Images URL
-    [200, 400, 250, 300], //HP values
-    [90, 50, 75, 65], //Attack damage values
+    [200, 400, 250], //HP values
+    [90, 50, 75], //Attack damage values
     "Night King", //boss name
-    "https://static.wikia.nocookie.net/gameofthrones/images/1/1f/Night_King_BTW.jpg/revision/latest/scale-to-width-down/350?cb=20210722093007", //boss image URI
+    "QmWaNQKSKMPWBUEtZCt7xowXonozJGQcKJjkZQyacHLutY", //boss image URI
     10000, //boss hp
     70 //boss attack damage
   );
@@ -19,22 +24,35 @@ const main = async () => {
   await gameContract.deployed();
   console.log("Contract deployed to:", gameContract.address);
 
-  let txn;
+  // let txn;
 
-  // We only have three characters.
-  // an NFT w/ the character at index 2 of our array.
-  txn = await gameContract.mintCharacterNFT(2);
-  await txn.wait();
+  // txn = await gameContract.mintCharacterNFT(0);
+  // await txn.wait();
+  // console.log("Minted NFT #1");
 
-  txn = await gameContract.attackBoss();
-  await txn.wait();
+  // txn = await gameContract.mintCharacterNFT(1);
+  // await txn.wait();
+  // console.log("Minted NFT #2");
 
-  txn = await gameContract.attackBoss();
-  await txn.wait();
+  // txn = await gameContract.mintCharacterNFT(2);
+  // await txn.wait();
+  // console.log("Minted NFT #3");
 
-  // Get the value of the NFT's URI.
-  let returnedTokenUri = await gameContract.tokenURI(1);
-  console.log("Token URI:", returnedTokenUri);
+  // txn = await gameContract.mintCharacterNFT(3);
+  // await txn.wait();
+  // console.log("Minted NFT #4");
+
+  // txn = await gameContract.attackBoss();
+  // await txn.wait();
+
+  // txn = await gameContract.attackBoss();
+  // await txn.wait();
+
+  // console.log("Done deploying and minting!");
+
+  //Get the value of the NFT's URI.
+  // let returnedTokenUri = await gameContract.tokenURI(1);
+  // console.log("Token URI:", returnedTokenUri);
 };
 
 const runMain = async () => {
